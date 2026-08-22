@@ -596,7 +596,7 @@ body.is-revealed #site {
   justify-self: center;
   align-self: end;
   margin-bottom: 0px;
-  transform: translateY(24px);
+  transform: translateY(44px);
   display: flex;
   flex-direction: column;
   align-items: center;
