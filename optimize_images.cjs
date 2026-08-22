@@ -4,7 +4,7 @@ const sharp = require('sharp');
 
 const root = __dirname;
 
-async function processImage(relPath, maxWidth, quality = 80) {
+async function processImage(relPath, maxWidth, quality = 82) {
   const fullPath = path.join(root, relPath);
   if (!fs.existsSync(fullPath)) return;
 
@@ -15,7 +15,8 @@ async function processImage(relPath, maxWidth, quality = 80) {
   const tmpPath = fullPath + '.tmp';
 
   try {
-    let instance = sharp(fullPath);
+    // .rotate() automatically auto-orients EXIF rotation metadata!
+    let instance = sharp(fullPath).rotate();
     const metadata = await instance.metadata();
 
     if (metadata.width && metadata.width > maxWidth) {
@@ -28,7 +29,6 @@ async function processImage(relPath, maxWidth, quality = 80) {
       await instance.jpeg({ quality, mozjpeg: true }).toFile(tmpPath);
     }
 
-    // Ensure handle is released
     instance.destroy();
     await new Promise((r) => setTimeout(r, 150));
 
@@ -37,7 +37,7 @@ async function processImage(relPath, maxWidth, quality = 80) {
       const newSizeMB = (newStat.size / 1024 / 1024).toFixed(2);
       fs.unlinkSync(fullPath);
       fs.renameSync(tmpPath, fullPath);
-      console.log(`[Optimized] ${relPath}: ${oldSizeMB} MB -> ${newSizeMB} MB`);
+      console.log(`[Auto-Oriented & Compressed] ${relPath}: ${oldSizeMB} MB -> ${newSizeMB} MB`);
     }
   } catch (err) {
     console.error(`[Error] ${relPath}:`, err.message);
@@ -48,29 +48,29 @@ async function processImage(relPath, maxWidth, quality = 80) {
 }
 
 async function run() {
-  console.log('Starting image optimizations...');
+  console.log('Starting auto-oriented image compression...');
 
-  // Hero & Cover (max 1400px width)
+  // Hero & Cover
   await processImage('assets/images/cover/cover.png', 1400);
   await processImage('assets/images/hero/hero.png', 1400);
   await processImage('assets/images/hero/hero-alt.png', 1400);
 
-  // Bride & Groom portraits (max 600px width)
+  // Bride & Groom portraits
   await processImage('assets/images/gallery/bride.png', 600);
   await processImage('assets/images/gallery/groom.png', 600);
   await processImage('assets/images/gallery/single/ChatGPT Image Aug 23, 2026, 12_15_03 AM.png', 600);
   await processImage('assets/images/gallery/single/ChatGPT Image Aug 23, 2026, 12_37_19 AM.png', 600);
 
-  // Family photos (max 1000px width)
-  await processImage('assets/images/gallery/IMG_0209.JPG.jpeg', 1000);
-  await processImage('assets/images/gallery/IMG_0202.JPG.jpeg', 1000);
+  // Family photos
+  await processImage('assets/images/gallery/IMG_0209.JPG.jpeg', 1200);
+  await processImage('assets/images/gallery/IMG_0202.JPG.jpeg', 1200);
 
-  // Couple gallery canvas (max 1000px width)
-  await processImage('assets/images/gallery/couple/IMG_0203.JPG.jpeg', 1000);
-  await processImage('assets/images/gallery/couple/IMG_9938.JPG.jpeg', 1000);
-  await processImage('assets/images/gallery/couple/WhatsApp Image 2026-08-23 at 12.07.31 AM.jpeg', 1000);
+  // Couple gallery canvas
+  await processImage('assets/images/gallery/couple/IMG_0203.JPG.jpeg', 1200);
+  await processImage('assets/images/gallery/couple/IMG_9938.JPG.jpeg', 1200);
+  await processImage('assets/images/gallery/couple/WhatsApp Image 2026-08-23 at 12.07.31 AM.jpeg', 1200);
 
-  console.log('--- ALL IMAGE OPTIMIZATIONS COMPLETE ---');
+  console.log('--- ALL AUTO-ORIENTED IMAGE OPTIMIZATIONS COMPLETE ---');
 }
 
 run();
