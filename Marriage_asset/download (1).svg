@@ -1,0 +1,6 @@
+<svg class="ico story-prose__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="i-ring" viewBox="0 0 64 64">
+        <circle cx="23" cy="34" r="14"></circle>
+        <circle cx="41" cy="34" r="14"></circle>
+      </symbol></defs>
+            <use href="#i-ring"></use>
+          </svg>

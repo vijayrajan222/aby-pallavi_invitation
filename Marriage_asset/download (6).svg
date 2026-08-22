@@ -1,0 +1,5 @@
+<svg class="ico card-ico" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="i-pillar" viewBox="0 0 64 64">
+        <path d="M12 12h40M15 20h34M20 20v28M44 20v28M15 48h34M11 56h42"></path>
+      </symbol></defs>
+              <use href="#i-pillar"></use>
+            </svg>

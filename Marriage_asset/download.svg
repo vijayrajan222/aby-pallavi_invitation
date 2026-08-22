@@ -1,0 +1,5 @@
+<svg class="ico" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="i-phone" viewBox="0 0 64 64">
+        <path d="M22 8l8 12-6 6c3.4 7 8.6 12.2 15.6 15.6l6-6 12 8-4 8c-1.6 3.2-5 4.6-9 3.6C29 51.6 12.4 35 8.4 17.4 7.4 13.4 8.8 10 12 8.4z"></path>
+      </symbol></defs>
+                <use href="#i-phone"></use>
+              </svg>

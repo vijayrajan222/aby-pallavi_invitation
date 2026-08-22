@@ -1,0 +1,10 @@
+<svg class="ico btn-open__lamp" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="i-lamp" viewBox="0 0 64 64">
+        <path d="M32 5.5c2.7 3.6 4.1 6.3 4.1 8.7 0 2.5-1.8 4.3-4.1 4.3s-4.1-1.8-4.1-4.3c0-2.4 1.4-5.1 4.1-8.7z" fill="currentColor" stroke="none"></path>
+        <path d="M17.5 23.5h29l-4.5 5.5H22z"></path>
+        <path d="M32 29v11.5"></path>
+        <path d="M23.5 40.5h17"></path>
+        <path d="M32 40.5v8.5"></path>
+        <path d="M19 57c0-3.6 5.8-6.5 13-6.5S45 53.4 45 57z"></path>
+      </symbol></defs>
+            <use href="#i-lamp"></use>
+          </svg>
