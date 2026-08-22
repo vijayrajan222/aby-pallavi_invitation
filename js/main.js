@@ -362,11 +362,8 @@
     clearTimeout(safety);
     clearTimeout(readyWait);
 
-    ensureHeroReady().then(function () {
-      revealHeroAndSite();
-    }).catch(function () {
-      revealHeroAndSite();
-    });
+    revealHeroAndSite();
+    ensureHeroReady();
   }
 
   function startPlaybackUnderCover() {
